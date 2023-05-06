@@ -4,4 +4,45 @@
         <link href="https://pokemonletsgo.pokemon.com/assets/img/common/char-pikachu.png" rel="icon">
         <link rel="stylesheet" href="style.css"> 
     </head>
+    <body>
+        <!--Solo podemos ocupar una vez el h1-->
+        <h1> Mokepon 🌱💧🔥</h1>
+
+        <section id="selectMokepon">
+            <h2>Elige tu mokepon</h2>
+
+            Mokepones <br>
+            <!--input es una etiqueta que se cierra sola-->
+            <!--name es la clase de los inputa, para agruparlos dentro del mismo y solo se pueda seleccionar uno a la vez-->
+            <input type="radio" name="mascota" id="pikachu"> <label for="pikachu">Pikachu -> Electrico</label>  <br>
+            <input type="radio" name="mascota" id="rhydon"><label for="rhydon"> Rhydon -> Tierra </label> <br>
+            <input type="radio" name="mascota" id="charizard"><label for="charizard">Charizard -> Fuego</label>   <br>
+            <!--Label está al mismo nivel que el input, sirve para informar qé están seleccionando-->
+            <!--el atributo for es para que cuando se le de click al texto, se seleccione el input-->
+
+            <button>Seleccionar</button>
+        </section>
+
+        <section id="selectAtack">
+            <h2>Selecciona tu ataque</h2>
+            <!--Necesitamos que algunas partes sean dinámicas, por eso agregamos un span-->
+            <p>Tu mokepon tiene <span>3</span> vidas</p>
+            <p>El mokepon del enemigo tiene <span>3</span> vidas</p>
+        <!--Es una buena práctica que los botones estén dentro de un contenedor-->
+            <p>
+                <button>Fuego 🔥</button>
+                <button>Agua 💧</button>
+                <button>Tierra 🌱</button>
+
+            </p>
+        </section>
+
+        <section id="mensajes">
+            <p>Tu mascota atacó con FUEGO, el enemigo atacó con TIERRA -- GANASTE 🥳</p>
+        </section>
+
+        <section id="restart">
+            <button>Reiniciar</button>
+        </section>
+    </body>
 </html>
