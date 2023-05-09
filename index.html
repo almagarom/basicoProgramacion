@@ -3,6 +3,8 @@
         <title>Juego Mokepon</title>
         <link href="https://pokemonletsgo.pokemon.com/assets/img/common/char-pikachu.png" rel="icon">
         <link rel="stylesheet" href="style.css"> 
+        <!--Para definir la ruta relativa hay que comenzar con el . y / la diagonal-->
+        
     </head>
     <body>
         <!--Solo podemos ocupar una vez el h1-->
@@ -20,7 +22,8 @@
             <!--Label está al mismo nivel que el input, sirve para informar qé están seleccionando-->
             <!--el atributo for es para que cuando se le de click al texto, se seleccione el input-->
 
-            <button>Seleccionar</button>
+            <!--Hay que agregar un id a cada uno de los botones-->
+            <button id="select">Seleccionar</button>
         </section>
 
         <section id="selectAtack">
@@ -30,9 +33,9 @@
             <p>El mokepon del enemigo tiene <span>3</span> vidas</p>
         <!--Es una buena práctica que los botones estén dentro de un contenedor-->
             <p>
-                <button>Fuego 🔥</button>
-                <button>Agua 💧</button>
-                <button>Tierra 🌱</button>
+                <button id="fire">Fuego 🔥</button>
+                <button id="water">Agua 💧</button>
+                <button id="ground">Tierra 🌱</button>
 
             </p>
         </section>
@@ -42,7 +45,8 @@
         </section>
 
         <section id="restart">
-            <button>Reiniciar</button>
+            <button id="restartear">Reiniciar</button>
         </section>
+        <script src="./js/main.js"></script>
     </body>
 </html>
