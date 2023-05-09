@@ -4,7 +4,7 @@
         <link href="https://pokemonletsgo.pokemon.com/assets/img/common/char-pikachu.png" rel="icon">
         <link rel="stylesheet" href="style.css"> 
         <!--Para definir la ruta relativa hay que comenzar con el . y / la diagonal-->
-        
+        <script src="./js/main.js"></script>
     </head>
     <body>
         <!--Solo podemos ocupar una vez el h1-->
@@ -29,8 +29,8 @@
         <section id="selectAtack">
             <h2>Selecciona tu ataque</h2>
             <!--Necesitamos que algunas partes sean dinámicas, por eso agregamos un span-->
-            <p>Tu mokepon tiene <span>3</span> vidas</p>
-            <p>El mokepon del enemigo tiene <span>3</span> vidas</p>
+            <p>Tu <span id="pokemonJugador">mascota</span> tiene <span>3</span> vidas</p>
+            <p>El <span id="pokemonEnemigo">mascota</span> del enemigo tiene <span>3</span> vidas</p>
         <!--Es una buena práctica que los botones estén dentro de un contenedor-->
             <p>
                 <button id="fire">Fuego 🔥</button>
@@ -41,12 +41,12 @@
         </section>
 
         <section id="mensajes">
-            <p>Tu mascota atacó con FUEGO, el enemigo atacó con TIERRA -- GANASTE 🥳</p>
+            <p>Tu mascota atacó con <span id="ataqueJugador">AGUA</span>, el enemigo atacó con <span id="ataqueEnemigo">FUEGO</span> -- GANASTE 🥳</p>
         </section>
 
         <section id="restart">
             <button id="restartear">Reiniciar</button>
         </section>
-        <script src="./js/main.js"></script>
+        
     </body>
 </html>
