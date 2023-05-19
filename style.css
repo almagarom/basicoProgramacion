@@ -1,0 +1,104 @@
+/*Para importar un tipo de letra desde google font*/
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
+/*Lenguaje de estilos*/
+h1{
+    font-family: 'Pokemon Solid', sans-serif;
+    color: violet;
+    width: 700;
+    height: 130;
+    background-color: cadetblue;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 80px;
+    margin: 10px;
+
+}
+/*
+Este label tiene un display inline, por lo cual aunque le cambiemos el ancho y alto, no se modificará como tal
+label{
+    background-color: aqua;
+    width: 200px;
+    height: 150px;
+}
+input{
+    background-color: aqua;
+    width: 200px;
+    height: 150px;
+}
+button{
+    background-color: aqua;
+    width: 200px;
+    height: 150px;
+}*/
+#selectMokepon{
+    /*para que sepa que se van a ocupar las herramientas de flexbox*/
+    display: flex;
+    /*para que cada elemento se acomode uno debajo del otro*/
+    flex-direction: column;
+    /*Para que los elementos se acomoden verticalmente al centro del contenedor*/
+    justify-content: center;
+    /*Para que los elementos se ajusten centrados a lo ancho de la pantalla*/
+    align-items: center;
+
+    /*Para que el contenido se ajuste al centro de la pantalla independientemente de su tamaño*/
+    height: 100vh;
+    /*view height*/
+}
+
+/*Agregaremos una clase a todos los label que tienen escrito el nombre de los ataques para que las mismas características se apliquen a todos los casos*/
+.tarjetas{
+    background:linear-gradient( green, rgb(117, 237, 131));
+    height: 200px;
+    width: 300px;
+    padding: 15px;
+    /*para que el padding no se agregue como un tamaño extra al tamaño inicial que se le dió al elemento*/
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin: 10px;
+    /*Para que ponga a su contenido un elemento al lado del otro*/
+    display: flex;
+    /*Para ajustar los items al centro del contenedor*/
+    align-items: center;
+}
+
+button{
+    background: linear-gradient( rebeccapurple, pink);
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgb(207, 76, 98);
+    width: 200px;
+    color: antiquewhite;
+    /*Aplicarle independientemente el tipo de letra*/
+    font-family: 'Raleway', sans-serif;
+    /*Si le ponemos 4 valores al margin serán en el orden de las manecillas del reloj empezando desde arriba*/
+    margin: 30px;
+}
+
+h3{
+    background-color: aqua;
+    padding: 10px;
+    border-radius: 20px;
+
+}
+body{
+    background: linear-gradient(rgb(232, 133, 133), rgb(245, 138, 245), rgb(117, 117, 240));
+    font-family: 'Raleway', sans-serif;
+
+}
+
+.divClass{
+
+    display: flex;
+}
+
+.tarjetas img{
+    width: 200px;
+}
+
+input{
+    /*Para ocultar los inputs*/
+    display: none;
+}

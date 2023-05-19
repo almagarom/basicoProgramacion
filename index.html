@@ -5,48 +5,71 @@
         <link rel="stylesheet" href="style.css"> 
         <!--Para definir la ruta relativa hay que comenzar con el . y / la diagonal-->
         <script src="./js/main.js"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <!--Solo podemos ocupar una vez el h1-->
-        <h1> Mokepon 🌱💧🔥</h1>
+        
 
         <section id="selectMokepon">
+            <h1> Mokepon 🌱💧🔥</h1>
             <h2>Elige tu mokepon</h2>
 
-            Mokepones <br>
-            <!--input es una etiqueta que se cierra sola-->
-            <!--name es la clase de los inputa, para agruparlos dentro del mismo y solo se pueda seleccionar uno a la vez-->
-            <input type="radio" name="mascota" id="pikachu"> <label for="pikachu">Pikachu -> Electrico</label>  <br>
-            <input type="radio" name="mascota" id="rhydon"><label for="rhydon"> Rhydon -> Tierra </label> <br>
-            <input type="radio" name="mascota" id="charizard"><label for="charizard">Charizard -> Fuego</label>   <br>
-            <!--Label está al mismo nivel que el input, sirve para informar qé están seleccionando-->
-            <!--el atributo for es para que cuando se le de click al texto, se seleccione el input-->
+            <h3>Mokepones</h3> <br>
 
+            <div class="divClass">
+                <!--input es una etiqueta que se cierra sola-->
+                <!--name es la clase de los inputa, para agruparlos dentro del mismo y solo se pueda seleccionar uno a la vez-->
+                <input type="radio" name="mascota" id="pikachu"> <label class="tarjetas" for="pikachu">
+                    <p> Pikachu -> Electrico</p>
+                    <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="Pikachu">
+                </label>  <br>
+                <input type="radio" name="mascota" id="rhydon"><label class="tarjetas" for="rhydon"> 
+                    <p>Rhydon -> Tierra </p> 
+                    <img src="./assets/mokepons_mokepon_capipepo_attack.png">
+                </label> <br>
+                <input type="radio" name="mascota" id="charizard"><label class="tarjetas" for="charizard">
+                    <p> Charizard -> Fuego</p>
+                    <img src="./assets/mokepons_mokepon_ratigueya_attack.png">
+                </label>   <br>
+                <!--Label está al mismo nivel que el input, sirve para informar qé están seleccionando-->
+                <!--el atributo for es para que cuando se le de click al texto, se seleccione el input-->
+            </div>
             <!--Hay que agregar un id a cada uno de los botones-->
             <button id="select">Seleccionar</button>
         </section>
 
         <section id="selectAtack">
+            <h1> Mokepon 🌱💧🔥</h1>
             <h2>Selecciona tu ataque</h2>
-            <!--Necesitamos que algunas partes sean dinámicas, por eso agregamos un span-->
-            <p>Tu <span id="pokemonJugador">mascota</span> tiene <span id="vidasJugador">3</span> vidas</p>
-            <p>El <span id="pokemonEnemigo">mascota</span> del enemigo tiene <span id="vidasEnemigo">3</span> vidas</p>
-        <!--Es una buena práctica que los botones estén dentro de un contenedor-->
-            <p>
+            <div id="ataquesBotones">
                 <button id="fire">Fuego 🔥</button>
                 <button id="water">Agua 💧</button>
                 <button id="ground">Tierra 🌱</button>
 
-            </p>
+            </div>
+
+            <div>
+                <section id="mensajes">
+
+                </section>
+        
+                <section id="restart">
+                    <button id="restartear">Reiniciar</button>
+                </section>
+            </div>
+
+            <div>
+                <!--Necesitamos que algunas partes sean dinámicas, por eso agregamos un span-->
+            <p>Tu <span id="pokemonJugador">mascota</span> tiene <span id="vidasJugador">3</span> vidas</p>
+            <p>El <span id="pokemonEnemigo">mascota</span> del enemigo tiene <span id="vidasEnemigo">3</span> vidas</p>
+        <!--Es una buena práctica que los botones estén dentro de un contenedor-->
+           
+            </div>
+             
         </section>
 
-        <section id="mensajes">
-            
-        </section>
-
-        <section id="restart">
-            <button id="restartear">Reiniciar</button>
-        </section>
+        
         
     </body>
 </html>
