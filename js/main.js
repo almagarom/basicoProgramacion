@@ -37,7 +37,8 @@ window.addEventListener("load", iniciarJuego )
 
 function elegirPokemon (){
     document.getElementById("selectMokepon").style.display = "none"
-    document.getElementById("selectAtack").style.display = "block"
+    //Modifico este tipo de display para que se ajuste al flex
+    document.getElementById("selectAtack").style.display = "flex"
     //Agrego para todos los INPUTS para detectar si han sido seleccionados o no
     let pikachu = document.getElementById("pikachu")
     let rhydon  = document.getElementById("rhydon")
@@ -126,13 +127,33 @@ function ataqueTierra(){
 //agrego nueva funcion para enviar los ataques que está haciendo cada uno, el jugador y el enemigo
 function createMessage(final){
     //para que sepa donde se va a mostrar
-    var seccionAtaques = document.getElementById("mensajes")
+
+    //voy a cambiar la sección donde se motrara el mensaje de si ganó o èrdio
+    //var seccionAtaques = document.getElementById("mensajes")
+    var seccionAtaques = document.getElementById("resultadoGanador")
+    seccionAtaques.innerHTML = ""
+    var seccionAtaquesJugador = document.getElementById("ataquesJugador")
+    var seccionAtaquesEnemigo = document.getElementById("ataquesEnemigo")
+
+    var parrafoJugador = document.createElement("p")
+    var parrafoEnemigo = document.createElement("p")
+    parrafoResultado = document.createElement("p")
+
+    parrafoJugador.innerHTML = ataqueJugador
+    parrafoEnemigo.innerHTML = AtaqueEnemigo
+    parrafoResultado.innerHTML = final
+
+
+    //Si lo agrego directamente como parrafo, no necesito agregar el append Child
+    seccionAtaques.appendChild(parrafoResultado)
+    seccionAtaquesJugador.appendChild(parrafoJugador)
+    seccionAtaquesEnemigo.appendChild(parrafoEnemigo)
 
 
     //entre comillas le decimos cual es el tipo de etiqueta HTML que queremos mostrar
-    var parrafo = document.createElement("p")
-    parrafo.innerHTML = "Tu mascota atacó con"+ ataqueJugador+" el enemigo atacó con "+ AtaqueEnemigo + " " + final
-    seccionAtaques.appendChild(parrafo)
+    //var parrafo = document.createElement("p")
+    //parrafo.innerHTML = "Tu mascota atacó con"+ ataqueJugador+" el enemigo atacó con "+ AtaqueEnemigo + " " + final
+    //seccionAtaques.appendChild(parrafo)
 }
 
 //Para saber si ganamos o perdimos
@@ -177,13 +198,13 @@ function revisarVidas (){
 //Para enviar el mensaje del resultado final
 function createMessageFinal(mensajeFinal){
     //para que sepa donde se va a mostrar
-    var seccionAtaques = document.getElementById("mensajes")
+    var seccionAtaques = document.getElementById("resultadoGanador")
 
 
     //entre comillas le decimos cual es el tipo de etiqueta HTML que queremos mostrar
     var parrafo = document.createElement("p")
-    parrafo.innerHTML = mensajeFinal
-    seccionAtaques.appendChild(parrafo)
+    parrafoResultado.innerHTML = mensajeFinal
+    //seccionAtaques.appendChild(parrafo)
     //Para deshabilitar los botones de los ataques cuando ya no se tengan vidas
     document.getElementById("fire").disabled = true
     document.getElementById("water").disabled = true

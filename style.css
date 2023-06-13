@@ -14,6 +14,7 @@ h1{
     text-align: center;
     font-size: 80px;
     margin: 10px;
+    border-radius: 25px;
 
 }
 /*
@@ -75,6 +76,7 @@ button{
     font-family: 'Raleway', sans-serif;
     /*Si le ponemos 4 valores al margin serán en el orden de las manecillas del reloj empezando desde arriba*/
     margin: 30px;
+    font-size: x-large;
 }
 
 h3{
@@ -101,4 +103,29 @@ body{
 input{
     /*Para ocultar los inputs*/
     display: none;
+}
+
+#selectAtack{
+    /*Para que los elementos se ubiquen con estructura flexible*/
+    display: flex;
+    /*Para que los elementos se ordenen verticalmente*/
+    flex-direction: column;
+    /*Para alinear los elementos centrados*/
+    align-items: center;
+}
+
+.botonAtaque{
+    font-size: x-large;
+}
+
+#mensajes{
+    display: flex;
+    background: pink;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 20px;
+    align-items: center;
+}
+.mensajeAtaques{
+    padding: 10px;
 }

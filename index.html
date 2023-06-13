@@ -12,7 +12,7 @@
         
 
         <section id="selectMokepon">
-            <h1> Mokepon 🌱💧🔥</h1>
+            <h1 id="tituloPrincipal"> Mokepon 🌱💧🔥</h1>
             <h2>Elige tu mokepon</h2>
 
             <h3>Mokepones</h3> <br>
@@ -39,32 +39,40 @@
             <button id="select">Seleccionar</button>
         </section>
 
+
+        <!--Sección que mostrar´los ataques que pueden hacer los mokepon-->
+        <!--Esta sección se muestra hasta elegir el mokepon en la primer parte-->
         <section id="selectAtack">
             <h1> Mokepon 🌱💧🔥</h1>
             <h2>Selecciona tu ataque</h2>
             <div id="ataquesBotones">
-                <button id="fire">Fuego 🔥</button>
-                <button id="water">Agua 💧</button>
-                <button id="ground">Tierra 🌱</button>
+                <button id="fire" class="botonAtaque">Fuego 🔥</button>
+                <button id="water" class="botonAtaque">Agua 💧</button>
+                <button id="ground" class="botonAtaque">Tierra 🌱</button>
 
             </div>
 
             <div>
                 <section id="mensajes">
+                    <div id="resultadoGanador" class="mensajesAtaques"></div>
+                    <section id="restart">
+                        <button id="restartear">Reiniciar</button>
+                    </section>
+                </section>
 
-                </section>
-        
-                <section id="restart">
-                    <button id="restartear">Reiniciar</button>
-                </section>
+
+                
             </div>
 
             <div>
+                <div id="ataquesJugador" class="mensajesAtaques"></div>
+                    
+                <div id="ataquesEnemigo" class="mensajesAtaques"></div>
                 <!--Necesitamos que algunas partes sean dinámicas, por eso agregamos un span-->
-            <p>Tu <span id="pokemonJugador">mascota</span> tiene <span id="vidasJugador">3</span> vidas</p>
-            <p>El <span id="pokemonEnemigo">mascota</span> del enemigo tiene <span id="vidasEnemigo">3</span> vidas</p>
-        <!--Es una buena práctica que los botones estén dentro de un contenedor-->
-           
+                <p>Tu <span id="pokemonJugador">mascota</span> tiene <span id="vidasJugador">3</span> vidas</p>
+                <p>El <span id="pokemonEnemigo">mascota</span> del enemigo tiene <span id="vidasEnemigo">3</span> vidas</p>
+                <!--Es una buena práctica que los botones estén dentro de un contenedor-->
+                
             </div>
              
         </section>
