@@ -102,7 +102,14 @@ body{
 
 input{
     /*Para ocultar los inputs*/
-    display: none;
+    /*momentaneamente no se ocultarán*/
+    /*display: none;*/
+}
+
+/*esta estructura hará que el hermano siguiente tome las caracteristicas agregadas*/
+/*En este caso, al darle click al input, el label siguiente adoptará las caracteristicas*/
+input:checked + label{
+    border: 5px solid rgb(222, 86, 86);
 }
 
 #selectAtack{
@@ -128,4 +135,31 @@ input{
 }
 .mensajeAtaques{
     padding: 10px;
+}
+
+.classAtaques{
+    /*Para poder desplegar un grid*/
+    display: grid;
+    grid-template-columns: 100px 100px;
+    justify-items: center;
+    align-items: center;
+}
+
+#divAtaquesJugador, #divAtaquesEnemigo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/*Para escribir las caracteristicas que queremos aplicar cuando se tengan esas caracteristicas*/
+/*max-width es como "hasta" para que se apliquen las caracteristicas con valores minimos a ese valor*/
+@media(max-width:360px){
+    .divClass{
+        flex-direction: column ;
+    }
+    #ataquesBotones{
+        display: flex;
+        flex-direction: column;
+    }
 }

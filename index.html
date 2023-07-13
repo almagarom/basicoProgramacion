@@ -64,13 +64,23 @@
                 
             </div>
 
-            <div>
-                <div id="ataquesJugador" class="mensajesAtaques"></div>
+            <div class="classAtaques"> <!--Elementos padre-->
+                <!--Agregamos un contenedor para los ataques del jugador-->
+                <div id="divAtaquesJugador"> <!--elementos hijos-->
+                    <!--reorganizamos el contenido-->
+                    <p id="vidasJugador">3</p>
+                    <p id="pokemonJugador"></p>
+                    <div id="ataquesJugador" class="mensajesAtaques"></div>
+              
+                </div>
+                
+                <div id="divAtaquesEnemigo">
+                    <p id="vidasEnemigo">3</p>
+                    <p id="pokemonEnemigo">mascota</p>
+                    <div id="ataquesEnemigo" class="mensajesAtaques"></div>
+                    <!--Necesitamos que algunas partes sean dinámicas, por eso agregamos un span-->
+                </div>
                     
-                <div id="ataquesEnemigo" class="mensajesAtaques"></div>
-                <!--Necesitamos que algunas partes sean dinámicas, por eso agregamos un span-->
-                <p>Tu <span id="pokemonJugador">mascota</span> tiene <span id="vidasJugador">3</span> vidas</p>
-                <p>El <span id="pokemonEnemigo">mascota</span> del enemigo tiene <span id="vidasEnemigo">3</span> vidas</p>
                 <!--Es una buena práctica que los botones estén dentro de un contenedor-->
                 
             </div>
