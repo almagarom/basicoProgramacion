@@ -3,6 +3,9 @@ function seleccionarPokemon(){
     
     elegirPokemon()
 }
+
+//arreglo para guardar los nombres de los mokepones
+let pokemones = []
 let pokemon = ""
 let ataqueJugador = ""
 let mostrarAtaqueJugador
@@ -10,6 +13,37 @@ let AtaqueEnemigo
 let combateFinal
 let vidasJugadorPokemon = 3
 let vidasEnemigoPokemon = 3
+
+const botonSeleccionarPokemon = document.getElementById("select")
+const pikachu = document.getElementById("pikachu")
+const rhydon  = document.getElementById("rhydon")
+const charizard = document.getElementById("charizard")
+const pokemonSeleccionadoJugador = document.getElementById("pokemonJugador")
+const pokemonSeleccionadoEnemigo = document.getElementById("pokemonEnemigo")
+const ataqueSeleccionadoEnemigo = document.getElementById("ataqueEnemigo")
+let seccionAtaques = document.getElementById("resultadoGanador")
+const seccionAtaquesJugador = document.getElementById("ataquesJugador")
+const seccionAtaquesEnemigo = document.getElementById("ataquesEnemigo")
+const vidasEnemigoPokemonModificar= document.getElementById("vidasEnemigo")
+const vidasJugadorPokemonModificar= document.getElementById("vidasJugador")
+
+//para crear a los mokepones como objetos
+class Mokepones{
+    constructor(nombre, foto, vida){
+        //Para decirle cual va a ser el nombre de cada una de sus propiedades
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+    }
+
+}
+
+let Mokeponpikachu = new Mokepones("Pikachu", "./assets/pikachu.png", 5)
+let Mokeponbulbasaur = new Mokepones("Bulbasaur", "./assets/squirtle.webp", 5)
+let Mokeponsquirtle = new Mokepones("Squirtle", "./assets/bulbasaur.png", 5)
+
+
+
 function iniciarJuego(){
     //Para ocultar los ataques al inicio
     document.getElementById("selectAtack").style.display = "none"
@@ -18,7 +52,7 @@ function iniciarJuego(){
 
     //Escuchar cuando se le de click al boton de seleccionar
     //document, para que revise el documento HTML
-    let botonSeleccionarPokemon = document.getElementById("select")
+   
 
     //Para escuchar los eventos que ocurran con ese botón especifico
     botonSeleccionarPokemon.addEventListener("click", seleccionarPokemon)
@@ -40,12 +74,7 @@ function elegirPokemon (){
     //Modifico este tipo de display para que se ajuste al flex
     document.getElementById("selectAtack").style.display = "flex"
     //Agrego para todos los INPUTS para detectar si han sido seleccionados o no
-    let pikachu = document.getElementById("pikachu")
-    let rhydon  = document.getElementById("rhydon")
-    let charizard = document.getElementById("charizard")
-    let pokemonSeleccionadoJugador = document.getElementById("pokemonJugador")
-
-    let pokemon = ""
+    
     if(pikachu.checked == true){
         pokemon = "Pikachu"
         console.log(pokemon)
@@ -70,7 +99,6 @@ function elegirPokemon (){
 }
 
 function enemigoAleatorio(min,max){
-    let pokemonSeleccionadoEnemigo = document.getElementById("pokemonEnemigo")
     let aleatorio = Math.floor(Math.random()*(max-min+1)+min)
     if(aleatorio==1){
         //Pikachu
@@ -83,7 +111,6 @@ function enemigoAleatorio(min,max){
 }
 
 function ataqueEnemigoAleatorio(min,max){
-    let ataqueSeleccionadoEnemigo = document.getElementById("ataqueEnemigo")
     let aleatorio = Math.floor(Math.random()*(max-min+1)+min)
     if(aleatorio==1){
         AtaqueEnemigo = "Fuego"
@@ -130,11 +157,7 @@ function createMessage(final){
 
     //voy a cambiar la sección donde se motrara el mensaje de si ganó o èrdio
     //var seccionAtaques = document.getElementById("mensajes")
-    var seccionAtaques = document.getElementById("resultadoGanador")
     seccionAtaques.innerHTML = ""
-    var seccionAtaquesJugador = document.getElementById("ataquesJugador")
-    var seccionAtaquesEnemigo = document.getElementById("ataquesEnemigo")
-
     var parrafoJugador = document.createElement("p")
     var parrafoEnemigo = document.createElement("p")
     parrafoResultado = document.createElement("p")
@@ -158,8 +181,7 @@ function createMessage(final){
 
 //Para saber si ganamos o perdimos
 function combate (){
-    vidasEnemigoPokemonModificar= document.getElementById("vidasEnemigo")
-    vidasJugadorPokemonModificar= document.getElementById("vidasJugador")
+   
     if(ataqueJugador == AtaqueEnemigo){
         combateFinal= "EMPATE"
     } else if(ataqueJugador== "Fuego" && AtaqueEnemigo== "Tierra"){
@@ -198,9 +220,6 @@ function revisarVidas (){
 //Para enviar el mensaje del resultado final
 function createMessageFinal(mensajeFinal){
     //para que sepa donde se va a mostrar
-    var seccionAtaques = document.getElementById("resultadoGanador")
-
-
     //entre comillas le decimos cual es el tipo de etiqueta HTML que queremos mostrar
     var parrafo = document.createElement("p")
     parrafoResultado.innerHTML = mensajeFinal

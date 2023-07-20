@@ -103,7 +103,7 @@ body{
 input{
     /*Para ocultar los inputs*/
     /*momentaneamente no se ocultarán*/
-    /*display: none;*/
+    display: none;
 }
 
 /*esta estructura hará que el hermano siguiente tome las caracteristicas agregadas*/
