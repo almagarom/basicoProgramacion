@@ -14,10 +14,14 @@ let combateFinal
 let vidasJugadorPokemon = 3
 let vidasEnemigoPokemon = 3
 
+let opcionDeMokepones 
+let pikachu
+let squirtle
+let bulbasaur
+
+const contenerTarjetas = document.getElementById("contenedorTarjetas")
 const botonSeleccionarPokemon = document.getElementById("select")
-const pikachu = document.getElementById("pikachu")
-const rhydon  = document.getElementById("rhydon")
-const charizard = document.getElementById("charizard")
+
 const pokemonSeleccionadoJugador = document.getElementById("pokemonJugador")
 const pokemonSeleccionadoEnemigo = document.getElementById("pokemonEnemigo")
 const ataqueSeleccionadoEnemigo = document.getElementById("ataqueEnemigo")
@@ -34,13 +38,33 @@ class Mokepones{
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
+        this.ataque = []
     }
 
 }
 
 let Mokeponpikachu = new Mokepones("Pikachu", "./assets/pikachu.png", 5)
-let Mokeponbulbasaur = new Mokepones("Bulbasaur", "./assets/squirtle.webp", 5)
-let Mokeponsquirtle = new Mokepones("Squirtle", "./assets/bulbasaur.png", 5)
+let Mokeponbulbasaur = new Mokepones("Bulbasaur", "./assets/bulbasaur.png", 5)
+let Mokeponsquirtle = new Mokepones("Squirtle", "./assets/squirtle.webp", 5)
+
+//Objetos literalessolo van a guardar informacion
+Mokeponbulbasaur.ataque.push(
+    {nombre: "Látigo Cepa 🌱 ", id:"botonLatigoCepa"},
+    {nombre: "Rayo Solar 🌱 ", id: "botonRayoSolar"},
+    {nombre: "Bomba Lodo 🍄 ", id: "botonBombaLodo"},
+)
+Mokeponsquirtle.ataque.push(
+    {nombre: "Hidrobomba 💧 ", id:"botonHidrobomba"},
+    {nombre: "Cabezazo ● ", id: "botonCabezazo"},
+    {nombre: "Burbuja 💧 ", id: "botonBurbuja"},
+)
+Mokeponpikachu.ataque.push(
+    {nombre: "Agilidad 🌀 ", id:"botonAgilidad"},
+    {nombre: "Impactrueno ⚡️ ", id: "botonImpactrueno"},
+    {nombre: "Ataque rápido ● ", id: "botonAtaqueRapido"},
+)
+
+pokemones.push(Mokeponpikachu, Mokeponbulbasaur, Mokeponsquirtle)
 
 
 
@@ -49,6 +73,21 @@ function iniciarJuego(){
     document.getElementById("selectAtack").style.display = "none"
     document.getElementById("restart").style.display= "none"
 
+    //Por cada mokepon que hay en el arreglo, haz lo siguiente
+    pokemones.forEach((pokemon)=>{
+    
+        //template iterario para implementar HTML con  JS
+        //agregué signo de acento para que todo lo considerara texto
+        opcionDeMokepones = `<input type="radio" name="mascota" id=${pokemon.nombre} /> 
+        <label class="tarjetas" for=${pokemon.nombre}>
+        <p> ${pokemon.nombre} </p>
+        <img src=${pokemon.foto} alt=${pokemon.nombre}>
+        </label>`
+        contenerTarjetas.innerHTML += opcionDeMokepones
+        pikachu = document.getElementById("Pikachu")
+        squirtle  = document.getElementById("Squirtle")
+        bulbasaur = document.getElementById("Bulbasaur")
+    })
 
     //Escuchar cuando se le de click al boton de seleccionar
     //document, para que revise el documento HTML
@@ -65,6 +104,8 @@ function iniciarJuego(){
     mostrarAtaqueJugador = document.getElementById("ataqueJugador")
 }
 
+
+
 //Para escuchar cualquier elemento que ocurra en el navegador
 //el evento load sirve para que se ejecute cuando cargue el HTML
 window.addEventListener("load", iniciarJuego )
@@ -80,17 +121,17 @@ function elegirPokemon (){
         console.log(pokemon)
         alert("Seleccionaste a Pikachu " )
         //para que se muestre el nombre dle pokemon seleccionado
-        pokemonSeleccionadoJugador.innerHTML = pokemon
-    }else if(rhydon.checked == true){
-        pokemon = "Rhydon"
+        pokemonSeleccionadoJugador.innerHTML = pikachu.id
+    }else if(squirtle.checked == true){
+        pokemon = "Squirtle"
         console.log(pokemon)
-        alert("Seleccionaste a Rhydon " )
-        pokemonSeleccionadoJugador.innerHTML = pokemon
-    }else if(charizard.checked == true){
-        pokemon = "Charizard"
+        alert("Seleccionaste a Squirtle " )
+        pokemonSeleccionadoJugador.innerHTML = squirtle.id
+    }else if(bulbasaur.checked == true){
+        pokemon = "Bulbasaur"
         console.log(pokemon)
-        alert("Seleccionaste a Charizard " )
-        pokemonSeleccionadoJugador.innerHTML = pokemon
+        alert("Seleccionaste a Bulbasaur " )
+        pokemonSeleccionadoJugador.innerHTML = bulbasaur.id
     } else{
         alert("Selecciona un Pokemon")
     }
@@ -104,9 +145,9 @@ function enemigoAleatorio(min,max){
         //Pikachu
         pokemonSeleccionadoEnemigo.innerHTML= "Pikachu"
     } else if(aleatorio==2){
-        pokemonSeleccionadoEnemigo.innerHTML= "Rhydon"
+        pokemonSeleccionadoEnemigo.innerHTML= "Squirtle"
     }else if(aleatorio==3){
-        pokemonSeleccionadoEnemigo.innerHTML= "Charizard"
+        pokemonSeleccionadoEnemigo.innerHTML= "Bulbasaur"
     }
 }
 
