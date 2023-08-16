@@ -18,8 +18,18 @@ let opcionDeMokepones
 let pikachu
 let squirtle
 let bulbasaur
+let mascotaJugador
+let ataquesPokemones
+let attackAgua
+let attackFuego
+let attackPlanta
+let attackElectrico
+
+let botonesAtaques=[]
+let ataquesJugadorIterando = []
 
 const contenerTarjetas = document.getElementById("contenedorTarjetas")
+const contenedorAtaques = document.getElementById("ataquesBotones")
 const botonSeleccionarPokemon = document.getElementById("select")
 
 const pokemonSeleccionadoJugador = document.getElementById("pokemonJugador")
@@ -49,19 +59,19 @@ let Mokeponsquirtle = new Mokepones("Squirtle", "./assets/squirtle.webp", 5)
 
 //Objetos literalessolo van a guardar informacion
 Mokeponbulbasaur.ataque.push(
-    {nombre: "Látigo Cepa 🌱 ", id:"botonLatigoCepa"},
-    {nombre: "Rayo Solar 🌱 ", id: "botonRayoSolar"},
-    {nombre: "Bomba Lodo 🍄 ", id: "botonBombaLodo"},
+    {nombre: "🌱", id:"botonLatigoCepa"},
+    {nombre: "🌱", id: "botonRayoSolar"},
+    {nombre: "🍄", id: "botonBombaLodo"},
 )
 Mokeponsquirtle.ataque.push(
-    {nombre: "Hidrobomba 💧 ", id:"botonHidrobomba"},
-    {nombre: "Cabezazo ● ", id: "botonCabezazo"},
-    {nombre: "Burbuja 💧 ", id: "botonBurbuja"},
+    {nombre: "💧", id:"botonHidrobomba"},
+    {nombre: "●", id: "botonCabezazo"},
+    {nombre: "💧", id: "botonBurbuja"},
 )
 Mokeponpikachu.ataque.push(
-    {nombre: "Agilidad 🌀 ", id:"botonAgilidad"},
-    {nombre: "Impactrueno ⚡️ ", id: "botonImpactrueno"},
-    {nombre: "Ataque rápido ● ", id: "botonAtaqueRapido"},
+    {nombre: "🌀", id:"botonAgilidad"},
+    {nombre: "⚡️", id: "botonImpactrueno"},
+    {nombre: "●", id: "botonAtaqueRapido"},
 )
 
 pokemones.push(Mokeponpikachu, Mokeponbulbasaur, Mokeponsquirtle)
@@ -97,10 +107,7 @@ function iniciarJuego(){
     botonSeleccionarPokemon.addEventListener("click", seleccionarPokemon)
     
     //para escuchar los eventos de presionar todos los demas botones de los ataques
-    document.getElementById("fire").addEventListener("click", ataqueFuego)
-    document.getElementById("water").addEventListener("click", ataqueAgua)
-    document.getElementById("ground").addEventListener("click", ataqueTierra)
-    document.getElementById("restartear").addEventListener("click", reiniciarJuego)
+      document.getElementById("restartear").addEventListener("click", reiniciarJuego)
     mostrarAtaqueJugador = document.getElementById("ataqueJugador")
 }
 
@@ -117,38 +124,91 @@ function elegirPokemon (){
     //Agrego para todos los INPUTS para detectar si han sido seleccionados o no
     
     if(pikachu.checked == true){
-        pokemon = "Pikachu"
-        console.log(pokemon)
-        alert("Seleccionaste a Pikachu " )
         //para que se muestre el nombre dle pokemon seleccionado
         pokemonSeleccionadoJugador.innerHTML = pikachu.id
+        mascotaJugador = pikachu.id
     }else if(squirtle.checked == true){
-        pokemon = "Squirtle"
-        console.log(pokemon)
-        alert("Seleccionaste a Squirtle " )
         pokemonSeleccionadoJugador.innerHTML = squirtle.id
+        mascotaJugador = squirtle.id
     }else if(bulbasaur.checked == true){
-        pokemon = "Bulbasaur"
-        console.log(pokemon)
-        alert("Seleccionaste a Bulbasaur " )
         pokemonSeleccionadoJugador.innerHTML = bulbasaur.id
+        mascotaJugador = bulbasaur.id
     } else{
         alert("Selecciona un Pokemon")
     }
-    enemigoAleatorio(1,3)
+    extraerAtaques(mascotaJugador)
+    enemigoAleatorio(0, pokemones.length-1)
+
+}
+
+function extraerAtaques(mascotaSeleccionada){
+    let ataques
+    for (let i = 0; i < pokemones.length; i++) {
+        if (mascotaJugador==pokemones[i].nombre) {
+            ataques = pokemones[i].ataque
+            console.log(ataques)
+        }
+        
+    }
+    mostrarAtaques(ataques)
+}
+
+function mostrarAtaques(attack){
+    attack.forEach((ataque)=>{
+        ataquesPokemones = `
+        <button id=${ataque.id} class="botonAtaque BAtaques">${ataque.nombre}</button>
+        `
+        contenedorAtaques.innerHTML +=ataquesPokemones
+    })
+    attackPlanta = document.getElementById("botonLatigoCepa")
+    attackElectrico= document.getElementById("botonImpactrueno")
+    attackAgua=document.getElementById("botonHidrobomba")
+    
+    //para que seleccione a todos los elementos que tengan la misma clase
+    botonesAtaques = document.querySelectorAll(".BAtaques")
+    console.log(botonesAtaques)
+
+
+}
+
+function secuenciaAtaques(){
+    botonesAtaques.forEach((boton)=>{
+        boton.addEventListener('click', (e)=>{
+            console.log(e)
+            if (e.target.textContent =="🌀") {
+                ataquesJugadorIterando.push("Psiquico")
+                console.log(ataquesJugadorIterando)
+                boton.style.background = "red"
+            }else if (e.target.textContent =="⚡️") {
+                ataquesJugadorIterando.push("Electrico")
+                console.log(ataquesJugadorIterando)
+                boton.style.background = "red"
+            }else if (e.target.textContent =="●") {
+                ataquesJugadorIterando.push("Normal")
+                console.log(ataquesJugadorIterando)
+                boton.style.background = "red"
+            }else if (e.target.textContent =="🌱") {
+                ataquesJugadorIterando.push("Planta")
+                console.log(ataquesJugadorIterando)
+                boton.style.background = "red"
+            }else if (e.target.textContent =="🍄") {
+                ataquesJugadorIterando.push("Veneno")
+                console.log(ataquesJugadorIterando)
+                boton.style.background = "red"
+            }else if (e.target.textContent =="💧") {
+                ataquesJugadorIterando.push("Agua")
+                console.log(ataquesJugadorIterando)
+                boton.style.background = "red"
+            }
+        })
+    })
 
 }
 
 function enemigoAleatorio(min,max){
     let aleatorio = Math.floor(Math.random()*(max-min+1)+min)
-    if(aleatorio==1){
-        //Pikachu
-        pokemonSeleccionadoEnemigo.innerHTML= "Pikachu"
-    } else if(aleatorio==2){
-        pokemonSeleccionadoEnemigo.innerHTML= "Squirtle"
-    }else if(aleatorio==3){
-        pokemonSeleccionadoEnemigo.innerHTML= "Bulbasaur"
-    }
+    pokemonSeleccionadoEnemigo.innerHTML= pokemones[aleatorio].nombre
+    secuenciaAtaques()
 }
 
 function ataqueEnemigoAleatorio(min,max){
@@ -168,29 +228,7 @@ function ataqueEnemigoAleatorio(min,max){
     }
 }
 
-function ataqueFuego(){
-    ataqueJugador= "Fuego"
-    console.log(ataqueJugador)
-    ataqueEnemigoAleatorio(1,3)
-    combate()
-    //mostrarAtaqueJugador.innerHTML = ataqueJugador
-}
 
-function ataqueAgua(){
-    ataqueJugador= "Agua"
-    console.log(ataqueJugador)
-    ataqueEnemigoAleatorio(1,3)
-    combate()
-    //mostrarAtaqueJugador.innerHTML = ataqueJugador
-}
-
-function ataqueTierra(){
-    ataqueJugador= "Tierra"
-    console.log(ataqueJugador)
-    ataqueEnemigoAleatorio(1,3)
-    combate()
-    //mostrarAtaqueJugador.innerHTML = ataqueJugador
-}
 
 //agrego nueva funcion para enviar los ataques que está haciendo cada uno, el jugador y el enemigo
 function createMessage(final){
